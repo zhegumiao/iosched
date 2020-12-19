@@ -32,7 +32,7 @@ buildscript {
 //        jcenter()
         maven { url = uri("https://maven.fabric.io/public") }
         // Android Build Server
-//        maven { url = uri("../iosched-prebuilts/m2repository") }
+        maven { url = uri("../iosched-prebuilts/m2repository") }
     }
     dependencies {
         classpath("com.android.tools.build:gradle:${Versions.ANDROID_GRADLE_PLUGIN}")
@@ -57,13 +57,13 @@ allprojects {
 
         // For Android Build Server
         // - Material Design Components
-//        maven { url = uri("${project.rootDir}/../iosched-prebuilts/repository") }
+        maven { url = uri("${project.rootDir}/../iosched-prebuilts/repository") }
         // - Other dependencies
-//        maven { url = uri("${project.rootDir}/../iosched-prebuilts/m2repository") }
+        maven { url = uri("${project.rootDir}/../iosched-prebuilts/m2repository") }
         // - Support Libraries, etc
-//        maven {
-//            url = uri("${project.rootDir}/../../../prebuilts/fullsdk/linux/extras/support/m2repository")
-//        }
+        maven {
+            url = uri("${project.rootDir}/../../../prebuilts/fullsdk/linux/extras/support/m2repository")
+        }
 
         flatDir {
             dirs = setOf(file("libs"), project(":ar").file("libs"))
