@@ -30,7 +30,7 @@ buildscript {
 //        google()
 //        mavenCentral()
 //        jcenter()
-//        maven { url = uri("https://maven.fabric.io/public") }
+        maven { url = uri("https://maven.fabric.io/public") }
         // Android Build Server
         maven { url = uri("../iosched-prebuilts/m2repository") }
     }
