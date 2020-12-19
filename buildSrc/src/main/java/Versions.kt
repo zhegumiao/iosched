@@ -25,7 +25,7 @@ object Versions {
 
     const val ANDROID_GRADLE_PLUGIN = "4.0.0"
     const val BENCHMARK = "1.0.0"
-    const val FABRIC = "1.31.2"
+    const val FABRIC = "1.25.4"
     const val GOOGLE_SERVICES = "4.3.3"
     const val KOTLIN = "1.3.72"
     const val NAVIGATION = "2.2.2"

@@ -21,12 +21,18 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 buildscript {
 
     repositories {
-        google()
-        mavenCentral()
-        jcenter()
+        maven { url = uri("https://maven.aliyun.com/nexus/content/repositories/google") }
+        maven { url = uri("https://maven.aliyun.com/nexus/content/repositories/central") }
+        maven { url = uri("https://maven.aliyun.com/nexus/content/repositories/jcenter") }
+        maven { url = uri("https://maven.aliyun.com/nexus/content/groups/public") }
+        maven { url = uri("https://maven.aliyun.com/nexus/content/repositories/gradle-plugin") }
+
+//        google()
+//        mavenCentral()
+//        jcenter()
         maven { url = uri("https://maven.fabric.io/public") }
         // Android Build Server
-        maven { url = uri("../iosched-prebuilts/m2repository") }
+//        maven { url = uri("../iosched-prebuilts/m2repository") }
     }
     dependencies {
         classpath("com.android.tools.build:gradle:${Versions.ANDROID_GRADLE_PLUGIN}")
@@ -51,13 +57,13 @@ allprojects {
 
         // For Android Build Server
         // - Material Design Components
-        maven { url = uri("${project.rootDir}/../iosched-prebuilts/repository") }
+//        maven { url = uri("${project.rootDir}/../iosched-prebuilts/repository") }
         // - Other dependencies
-        maven { url = uri("${project.rootDir}/../iosched-prebuilts/m2repository") }
+//        maven { url = uri("${project.rootDir}/../iosched-prebuilts/m2repository") }
         // - Support Libraries, etc
-        maven {
-            url = uri("${project.rootDir}/../../../prebuilts/fullsdk/linux/extras/support/m2repository")
-        }
+//        maven {
+//            url = uri("${project.rootDir}/../../../prebuilts/fullsdk/linux/extras/support/m2repository")
+//        }
 
         flatDir {
             dirs = setOf(file("libs"), project(":ar").file("libs"))
@@ -72,7 +78,7 @@ subprojects {
         kotlin {
             target("**/*.kt")
             ktlint(ktlintVer).userData(
-                mapOf("max_line_length" to "100", "disabled_rules" to "import-ordering")
+                    mapOf("max_line_length" to "100", "disabled_rules" to "import-ordering")
             )
             licenseHeaderFile(project.rootProject.file("copyright.kt"))
         }
@@ -100,10 +106,10 @@ subprojects {
     // TODO: Remove when the Coroutine and Flow APIs leave experimental/internal/preview.
     tasks.withType<KotlinCompile>().configureEach {
         kotlinOptions.freeCompilerArgs +=
-            "-Xuse-experimental=" +
-                "kotlin.Experimental," +
-                "kotlinx.coroutines.ExperimentalCoroutinesApi," +
-                "kotlinx.coroutines.InternalCoroutinesApi," +
-                "kotlinx.coroutines.FlowPreview"
+                "-Xuse-experimental=" +
+                        "kotlin.Experimental," +
+                        "kotlinx.coroutines.ExperimentalCoroutinesApi," +
+                        "kotlinx.coroutines.InternalCoroutinesApi," +
+                        "kotlinx.coroutines.FlowPreview"
     }
 }
